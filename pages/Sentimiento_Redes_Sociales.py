@@ -1,4 +1,5 @@
 import snscrape.modules.twitter as sntwitter
+import base64
 import streamlit as st
 import warnings
 import joblib
@@ -413,10 +414,15 @@ if uploaded_file is not None:
 
                 st.markdown("# --> Predicción Finalizada de Olist en Tweeter <--")
                 st.write(data)
-                f=st.button("Download")
-                if f:
-                        data.to_csv("data_tweeter.csv")
-                        st.write("data generada...")
+                
+                if st.button("Download CSV"):
+                        csv = data.to_csv(index=False)
+                        b64 = base64.b64encode(csv.encode()).decode()  # encode CSV file as base64
+                        href = f'<a href="data:file/csv;base64,{b64}" download="tweets.csv">Download CSV file</a>'
+                        st.markdown(href, unsafe_allow_html=True)
+
+
+                
 
                 st.write(":heavy_minus_sign:" * 32)
 
@@ -713,10 +719,14 @@ if uploaded_file is not None:
 
                 st.markdown("# --> Predicción Finalizada de Olist en Google <--")
                 st.write(google_df)
-                f=st.button("Download")
-                if f:
-                        google_df.to_csv("data_google.csv")
-                        st.write("data generada...")
+                
+                if st.button("Download CSV"):
+                        csv = google_df.to_csv(index=False)
+                        b64 = base64.b64encode(csv.encode()).decode()  # encode CSV file as base64
+                        href = f'<a href="data:file/csv;base64,{b64}" download="google.csv">Download CSV file</a>'
+                        st.markdown(href, unsafe_allow_html=True)
+
+
 
                 st.write(":heavy_minus_sign:" * 32)  
 

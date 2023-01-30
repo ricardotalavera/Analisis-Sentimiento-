@@ -1,5 +1,6 @@
 
 import streamlit as st
+import base64
 import warnings
 import joblib
 from sklearn.ensemble import VotingClassifier
@@ -396,12 +397,11 @@ if uploaded_file is not None:
                     st.markdown("# --> Predicción Finalizada <--")
                     st.write(data)
 
-                    st.download_button(
-                        label="Download data as CSV",
-                        data=data,
-                        file_name='data.csv',
-                        mime='text/csv',
-                    )
+                    if st.button("Download CSV"):
+                        csv = data.to_csv(index=False)
+                        b64 = base64.b64encode(csv.encode()).decode()  # encode CSV file as base64
+                        href = f'<a href="data:file/csv;base64,{b64}" download="data.csv">Download CSV file</a>'
+                        st.markdown(href, unsafe_allow_html=True)
 
 
 
