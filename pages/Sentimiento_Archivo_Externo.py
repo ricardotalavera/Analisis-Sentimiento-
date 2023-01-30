@@ -395,6 +395,7 @@ if uploaded_file is not None:
 
                     st.markdown("# --> Predicción Finalizada <--")
                     st.write(data)
+
                     f=st.button("Download")
                     if f:
                         data.to_csv("data.csv")
