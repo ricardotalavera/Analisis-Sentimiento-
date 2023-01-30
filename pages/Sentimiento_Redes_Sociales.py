@@ -54,7 +54,7 @@ stop_words = {'a', 'ao', 'aos', 'aquela', 'aquelas', 'aquele', 'aqueles', 'aquil
 
 c1,c2 =st.columns([3,10])
 
-c2.image("Logo_It.png")
+#c2.image("Logo_It.png")
 
 
 st.title("Sentimiento en Redes Sociales")
