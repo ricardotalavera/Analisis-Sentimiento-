@@ -27,5 +27,5 @@ Se emitirán las predicciones acerca del Sentimiento según el ejecutable del mo
 ### Red Social Twitter :
 El acceso a la red social Twitter, será en tiempo real, la búsqueda puede traer muchos registros, por razones de procesamiento se restringen los requests a 1000 Tweets. El proceso de conexión a la red de twitter es interno, por lo que el usuario solo deberá escoger la opción. El proceso interno entre otras cosas trasladará todo comentario en cualquier idioma registrado por Google hacia el idioma portugués.
 
-### Google :
+### git Google :
 Se tiene acceso también a las búsquedas de Google, con la diferencia, que las tablas de Google serán actualizadas cada 6 meses o a pedido del usuario. Las tablas actuales se encuentran almacenadas en un bucket de Google Cloud. Son más de 10,000 registros, por tanto por razones de procesamiento también se restringen los requests a 1000 registros. El proceso de conexión a Google Cloud es interno, por lo que el usuario solo deberá escoger la opción. El proceso interno entre otras cosas trasladará todo comentario en cualquier idioma registrado por Google hacia el idioma portugués.

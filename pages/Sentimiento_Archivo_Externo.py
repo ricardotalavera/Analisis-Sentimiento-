@@ -235,18 +235,16 @@ if uploaded_file is not None:
                         
                         st.markdown("### Resultados Regresión Logistica Multinomial")
 
-                        fig, (ax1,ax2,ax3) = plt.subplots(1,3,figsize=(15,5))
+                        fig, (ax2,ax3) = plt.subplots(1,2,figsize=(15,5))
                         colors=("yellowgreen","red","gold")
-                        orden=["Positive","Negative","Neutral"]
-                        sns.countplot(x="Sentimiento_log", data=data[["Comentarios","Sentimiento_log"]],
-                                      ax=ax1, palette=list(colors), order=orden)
-                        
+                                               
                         
                         wp={"linewidth":2,"edgecolor":"black"}
                         tags= data["Sentimiento_log"].value_counts()
+                        orden=tags.index
                         if len(data["Sentimiento_log"].unique())==2:
                             explode = (0.1,0.1)
-                            orden=tags.index.sort_values(ascending=False)
+                            
                         else:
                             explode = (0.1,0.1,0.1)
 
@@ -270,18 +268,16 @@ if uploaded_file is not None:
 
                         st.markdown("### Resultados Maquina de Soporte Vectorial")
 
-                        fig, (ax1,ax2,ax3) = plt.subplots(1,3,figsize=(15,5))
+                        fig, (ax2,ax3) = plt.subplots(1,2,figsize=(15,5))
                         colors=("yellowgreen","red","gold")
-                        orden=["Positive","Negative","Neutral"]
-                        sns.countplot(x="Sentimiento_svm", data=data[["Comentarios","Sentimiento_svm"]],
-                                      ax=ax1, palette=list(colors),order=orden)
-                        
+                                               
                         
                         wp={"linewidth":2,"edgecolor":"black"}
                         tags= data["Sentimiento_svm"].value_counts()
+                        orden=tags.index
                         if len(data["Sentimiento_svm"].unique())==2:
                             explode = (0.1,0.1)
-                            orden=tags.index.sort_values(ascending=False)
+                            
                         else:
                             explode = (0.1,0.1,0.1)
 
@@ -306,17 +302,16 @@ if uploaded_file is not None:
 
                         st.markdown("### Resultados Multinomial Naive Bayes")
 
-                        fig, (ax1,ax2,ax3) = plt.subplots(1,3,figsize=(15,5))
+                        fig, (ax2,ax3) = plt.subplots(1,2,figsize=(15,5))
                         colors=("yellowgreen","red","gold")
-                        orden=["Positive","Negative","Neutral"]
-                        sns.countplot(x="Sentimiento_mnb", data=data[["Comentarios","Sentimiento_mnb"]],
-                                      ax=ax1, palette=list(colors),order=orden)
+                        
                         
                         wp={"linewidth":2,"edgecolor":"black"}
                         tags= data["Sentimiento_mnb"].value_counts()
+                        orden=tags.index
                         if len(data["Sentimiento_mnb"].unique())==2:
                             explode = (0.1,0.1)
-                            orden=tags.index.sort_values(ascending=False)
+                            
                         else:
                             explode = (0.1,0.1,0.1)
 
@@ -340,17 +335,15 @@ if uploaded_file is not None:
 
                         st.markdown("### Resultados Random Forest")
 
-                        fig, (ax1,ax2,ax3) = plt.subplots(1,3,figsize=(15,5))
+                        fig, (ax2,ax3) = plt.subplots(1,2,figsize=(15,5))
                         colors=("yellowgreen","red","gold")
-                        orden=["Positive","Negative","Neutral"]
-                        sns.countplot(x="Sentimiento_rf", data=data[["Comentarios","Sentimiento_rf"]],
-                                      ax=ax1, palette=list(colors),order=orden)
-                        
+                                                
                         wp={"linewidth":2,"edgecolor":"black"}
                         tags= data["Sentimiento_rf"].value_counts()
+                        orden=tags.index
                         if len(data["Sentimiento_rf"].unique())==2:
                             explode = (0.1,0.1)
-                            orden=tags.index.sort_values(ascending=False)
+                            
                         else:
                             explode = (0.1,0.1,0.1)
 
@@ -375,17 +368,15 @@ if uploaded_file is not None:
                         
                         st.markdown("### Resultados Ensamble")
 
-                        fig, (ax1,ax2,ax3) = plt.subplots(1,3,figsize=(15,5))
+                        fig, (ax2,ax3) = plt.subplots(1,2,figsize=(15,5))
                         colors=("yellowgreen","red","gold")
-                        orden=["Positive","Negative","Neutral"]
-                        sns.countplot(x="Sentimiento_ens", data=data[["Comentarios","Sentimiento_ens"]],
-                                      ax=ax1, palette=list(colors),order=orden)
-                        
+                                                
                         wp={"linewidth":2,"edgecolor":"black"}
                         tags= data["Sentimiento_ens"].value_counts()
+                        orden=tags.index
                         if len(data["Sentimiento_ens"].unique())==2:
                             explode = (0.1,0.1)
-                            orden=tags.index.sort_values(ascending=False)
+                            
                         else:
                             explode = (0.1,0.1,0.1)
 
