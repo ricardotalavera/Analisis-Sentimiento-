@@ -396,10 +396,19 @@ if uploaded_file is not None:
                     st.markdown("# --> Predicción Finalizada <--")
                     st.write(data)
 
-                    f=st.button("Download")
-                    if f:
-                        data.to_csv("data.csv")
-                        st.write("data generada...")
+                    st.download_button(
+                        label="Download data as CSV",
+                        data=data,
+                        file_name='data.csv',
+                        mime='text/csv',
+                    )
+
+
+
+
+
+
+
 
                 else:
                     st.write("Archivo de Comentarios debe ser de tipo CSV")
