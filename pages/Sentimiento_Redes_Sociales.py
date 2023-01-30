@@ -160,7 +160,7 @@ if uploaded_file is not None:
                     if query in tweet.content and tweet.user.username not in usu:
                         con+=1
                         tweets.append([tweet.date, tweet.user.username, tweet.content, tweet.lang])
-                    if con == 1000:
+                    if con == 100:
                         break
                 
                 st.write("Se descargaron ",con," tweets")
@@ -289,6 +289,7 @@ if uploaded_file is not None:
 
                         fig, (ax1,ax2,ax3) = plt.subplots(1,3,figsize=(15,5))
                         colors=("yellowgreen","red","gold")
+                        orden=["Positive","Negative","Neutral"]
                         sns.countplot(x="Sentimiento_svm", data=data[["Tweet","Sentimiento_svm"]],
                                       ax=ax1, palette=list(colors),order=orden)
                         
@@ -324,6 +325,7 @@ if uploaded_file is not None:
 
                         fig, (ax1,ax2,ax3) = plt.subplots(1,3,figsize=(15,5))
                         colors=("yellowgreen","red","gold")
+                        orden=["Positive","Negative","Neutral"]
                         sns.countplot(x="Sentimiento_mnb", data=data[["Tweet","Sentimiento_mnb"]],
                                       ax=ax1, palette=list(colors),order=orden)
                         
@@ -357,6 +359,7 @@ if uploaded_file is not None:
 
                         fig, (ax1,ax2,ax3) = plt.subplots(1,3,figsize=(15,5))
                         colors=("yellowgreen","red","gold")
+                        orden=["Positive","Negative","Neutral"]
                         sns.countplot(x="Sentimiento_rf", data=data[["Tweet","Sentimiento_rf"]],
                                       ax=ax1, palette=list(colors),order=orden)
                         
@@ -391,9 +394,11 @@ if uploaded_file is not None:
 
                         fig, (ax1,ax2,ax3) = plt.subplots(1,3,figsize=(15,5))
                         colors=("yellowgreen","red","gold")
+                        orden=["Positive","Negative","Neutral"]
                         sns.countplot(x="Sentimiento_ens", data=data[["Tweet","Sentimiento_ens"]],
                                       ax=ax1, palette=list(colors),order=orden)
                         
+                      
                         wp={"linewidth":2,"edgecolor":"black"}
                         tags= data["Sentimiento_ens"].value_counts()
                         if len(data["Sentimiento_ens"].unique())==2:
@@ -428,7 +433,7 @@ if uploaded_file is not None:
 
                 st.write("Conectando con Google Cloud y leyendo archivos del bucket de Machine Learning ...")
                 bucket =storage_client.get_bucket("exit_model")
-                
+                nombres=[]
                 filename=list(bucket.list_blobs(prefix="google_files/google"))
                 vez=0
                 for name in filename:
@@ -437,10 +442,14 @@ if uploaded_file is not None:
                     nombre=name.name.replace("google_files/","")
                     df=blop.download_to_filename(nombre)
                     df=pd.read_csv(nombre)
+                    nombres.append(nombre)
                     if vez == 1:
                         google_df=df
                     else:
                         google_df=pd.concat([google_df,df])
+
+                for file in nombres:
+                    os.remove(file)
 
                 # eliminamos registros duplicados
                 google_df.drop_duplicates(inplace=True)
