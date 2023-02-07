@@ -13,7 +13,7 @@ El presente endpoint, es exclusivo para las personas que posean las credenciales
 
 ### Archivo de Comentarios :
 
-El archivo de comentarios deberá estar en formato CSV y el dataset deberá contener una sola columna , conteniendo los comentarios. Se recomienda efectuar requests que no excedan los 5000 registros. Los comentarios pueden estar en cualquier idioma, el Endpoint maneja traductor universal y trasladará todo comentario en cualquier idioma registrado por Google hacia el idioma portugués.
+El archivo de comentarios deberá estar en formato CSV y el dataset deberá contener una sola columna , conteniendo los comentarios. Se recomienda efectuar requests que no excedan los 1000 registros. Los comentarios pueden estar en cualquier idioma, el Endpoint maneja traductor universal y trasladará todo comentario en cualquier idioma registrado por Google hacia el idioma portugués.
 
 ### Outputs :
 El Endpoint emitirá dos gráficos de distribución : un diagrama de pie, un gráfico de barras y un wordcloud de terminos negativos, todos con los resultados de sentimiento calculado. Asimismo el Endpoint generará un archivo csv con los comentarios procesados y su resultado correspondiente en cálculo de sentimiento, el archivo mencionado podrá ser bajado a solicitud del usuario.
@@ -27,5 +27,5 @@ Se emitirán las predicciones acerca del Sentimiento según el ejecutable del mo
 ### Red Social Twitter :
 El acceso a la red social Twitter, será en tiempo real, la búsqueda puede traer muchos registros, por razones de procesamiento se restringen los requests a 1000 Tweets. El proceso de conexión a la red de twitter es interno, por lo que el usuario solo deberá escoger la opción. El proceso interno entre otras cosas trasladará todo comentario en cualquier idioma registrado por Google hacia el idioma portugués.
 
-### git Google :
+### Google Reviews :
 Se tiene acceso también a las búsquedas de Google, con la diferencia, que las tablas de Google serán actualizadas cada 6 meses o a pedido del usuario. Las tablas actuales se encuentran almacenadas en un bucket de Google Cloud. Son más de 10,000 registros, por tanto por razones de procesamiento también se restringen los requests a 1000 registros. El proceso de conexión a Google Cloud es interno, por lo que el usuario solo deberá escoger la opción. El proceso interno entre otras cosas trasladará todo comentario en cualquier idioma registrado por Google hacia el idioma portugués.
